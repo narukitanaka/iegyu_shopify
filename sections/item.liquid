@@ -1,0 +1,347 @@
+<div class="l-bg-content">
+  <div class="p-breadcrumb u-padding--wide">
+    <div class="l-content__inner">
+      <ol
+        class="p-breadcrumb__list"
+        itemscope
+        itemtype="https://schema.org/BreadcrumbList">
+        <li
+          class="p-breadcrumb__item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="../">
+            <span itemprop="name"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_home.svg?v=1681797668" alt="HOME"></span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        {% comment %} <li class="p-breadcrumb__item" itemprop="itemListElement" itemscope
+        itemtype="https://schema.org/ListItem"><a itemprop="item" href="./">
+        <span itemprop="name">全ての商品</span></a>
+        <meta itemprop="position" content="2" />
+        </li> {% endcomment %}
+        {% for collection in product.collections %}
+          {% assign excluded_collections = 'all,ranking,staff,1-999,1000-3999,4000-6999,7000-9999,10000-12999,13000-999999' | split: ',' %}
+          {% unless excluded_collections contains collection.handle %}
+            <li
+              class="p-breadcrumb__item"
+              itemprop="itemListElement"
+              itemscope
+              itemtype="https://schema.org/ListItem">
+              <a itemprop="item" href="{{ collection.url }}">
+                <span itemprop="name">{{ collection.title }}</span>
+              </a>
+              <meta itemprop="position" content="4" />
+            </li>
+          {% endunless %}
+        {% endfor %}
+        <li
+          class="p-breadcrumb__item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+          <span itemprop="name">{{ product.title }}</span>
+          <meta itemprop="position" content="5" />
+        </li>
+      </ol>
+    </div>
+    <!-- /.l-content__inner -->
+  </div>
+  <!-- /.p-breadcrumb -->
+  <div class="p-merchandise-content c-detail-content">
+    <div class="l-content__inner c-width--large">
+      <div class="p-merchandise-detail">
+        <div class="p-merchandise__img-content">
+          <div class="p-merchandise__img-wrapper">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                {% for image in product.images %}
+                  <div class="swiper-slide">
+                    <div class="p-img-wrapper">
+                      <img src="{{ image.src | img_url: 'master' }}" alt="">
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </div>
+            <!-- /.swiper -->
+            <div class="thumb-list">
+              {% for image in product.images %}
+                <div class="thumb-item">
+                  <a
+                    class="thumb-link"
+                    href="javascript:void(0);"
+                    onclick="thumbnail({{ forloop.index }})">
+                    <img src="{{ image.src | img_url: 'master' }}" alt="">
+                  </a>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+          <!-- /.p-merchandise__img-wrapper -->
+        </div>
+        <div class="p-merchandise__detail-content">
+          <p class="c-code">
+            {% assign current_variant = product.selected_or_first_available_variant %}
+            商品コード：{{ current_variant.sku }}
+          </p>
+          <ul class="c-category__list">
+            <li class="c-category__item">
+              商品カテゴリ：
+              {% assign excluded_collections = 'all,ranking,staff,1-999,1000-3999,4000-6999,7000-9999,10000-12999,13000-999999' | split: ',' %}
+              {% unless excluded_collections contains collection.handle %}
+                {{ collection.title }}
+              {% endunless %}
+            </li>
+          </ul>
+          <!-- /.c-category -->
+          <h1 class="c-merchandise__name">{{ product.title }}</h1>
+          <p class="c-price">{{ product.price | money_with_currency }}（税込）</p>
+          <table class="p-merchandise__infomation">
+            <tr>
+              {% if product.metafields.custom._maker != empty %}
+                <th>作り手</th>
+                <td>{{ product.metafields.custom._maker }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if product.metafields.custom._capacity != empty %}
+                <th>内容量</th>
+                <td>{{ product.metafields.custom._capacity }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if product.metafields.custom._materials != empty %}
+                <th>原材料名</th>
+                <td>{{ product.metafields.custom._materials }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if product.metafields.custom._bestbefore != empty %}
+                <th>賞味期限</th>
+                <td>{{ product.metafields.custom._bestbefore }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if product.metafields.custom._keep != empty %}
+                <th>保存方法</th>
+                <td>{{ product.metafields.custom._keep }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if product.metafields.custom._delivery != empty %}
+                <th>配送方法</th>
+                <td>{{ product.metafields.custom._delivery }}</td>
+              {% endif %}
+            </tr>
+          </table>
+          <dl class="p-txt-block">
+            <dt class="p-block__ttl">商品特徴</dt>
+            <dd class="p-block__inner">
+              <p>
+                {{ product.content }}
+              </p>
+            </dd>
+          </dl>
+          <dl class="p-txt-block">
+            {% if product.metafields.custom._use != empty %}
+              <dt class="p-block__ttl">使用方法</dt>
+              <dd class="p-block__inner">
+                <p>{{ product.metafields.custom._use }}</p>
+              </dd>
+            {% endif %}
+          </dl>
+          <dl class="p-txt-block">
+            {% if product.metafields.custom._allergen != empty %}
+              <dt class="p-block__ttl">アレルゲン情報</dt>
+              <dd class="p-block__inner">
+                <p>{{ product.metafields.custom._allergen }}</p>
+              </dd>
+            {% endif %}
+          </dl>
+
+          <div class="p-count">
+            <form
+              method="post"
+              action="/cart/add"
+              id="AddToCartForm">
+              <input
+                type="hidden"
+                name="id"
+                value="{{ product.variants[0].id }}" />
+              <p class="c-ttl">数量</p>
+              <div class="p-select-wrapper">
+                <select
+                  id="quantity"
+                  name="quantity"
+                  class="product-form__quantity">
+                  {% for i in (1..10) %}
+                    <option value="{{ i }}">{{ i }}</option>
+                  {% endfor %}
+                </select>
+                <!-- /# -->
+              </div>
+              <!-- /.p-select-wrapper -->
+              <div class="p-btn-wrapper">
+                <button type="submit" class="c-btn">カートに入れる</button>
+              </div>
+              <!-- /.p-btn-wrapper -->
+            </form>
+          </div>
+          <!-- /.p-count -->
+          <a href="/pages/contact?handle={{ product.handle  }}&name={{ product.title  }}&url={{ product.url }}" class="c-txt-inquiry">この商品について問い合わせる</a>
+        </div>
+      </div>
+      <!-- /.p-merchandise-detail -->
+    </div>
+    <!-- /.l-content__inner -->
+  </div>
+  <!-- /.p-merchandise-content -->
+</div>
+<!-- /.l-bg-content -->
+<div class="l-bg-bottom">
+  <section class="p-checked">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center ">チェックした商品
+        <span class="c-en">CHECKED</span>
+      </h2>
+      <ul class="p-checked__list">
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+      </ul>
+      <!-- /.p-checked__list -->
+    </div>
+    <!-- /.l-content__inner -->
+    <div class="l-content__fake"></div>
+    <!-- /.l-content__fake -->
+  </section>
+  <section class="p-bottom-inquiry">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center c-shuei">お問い合わせ<span class="c-en">CONTACT</span>
+      </h2>
+      <!-- /.c-section__ttl -->
+      <div class="p-bottom-inquiry-content">
+        <a href="tel:0989922929" class="p-bottom-inquiry__block p-tel">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_tel.svg?v=1681795966" alt=""></i>
+          <div>
+            <p class="c-en c-ttl">TEL</p>
+            <p class="c-tel-num">098-992-2929</p>
+            <p class="c-hour">（受付時間 9:00〜20:00）</p>
+          </div>
+
+        </a>
+        <!-- /.p-bottom-inquiry__tel -->
+        <a href="/pages/contact" class="p-bottom-inquiry__block p-form">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_mail.svg?v=1681795966" alt=""></i>
+          <div>
+            <p class="c-txt">お問い合わせフォーム</p>
+          </div>
+        </a>
+        <!-- /.p-bottom-inquiry__form -->
+      </div>
+      <!-- /.p-bottom-inquiry-content -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-bottom-inquiry -->
+</div>
+<!-- /.l-bg-bottom -->
+
+
+
+<script>
+  var addToCartButton = document.getElementById('add-to-cart');
+  addToCartButton.addEventListener('click', function() {
+    var quantity = document.getElementById('quantity').value;
+    Shopify.addItem('{{ product.variants[0].id }}', quantity);
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "item-detail",
+    "presets": [
+      {
+        "name": "item-detail"
+      }
+    ]
+  }
+{% endschema %}

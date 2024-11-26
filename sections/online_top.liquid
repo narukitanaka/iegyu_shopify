@@ -1,0 +1,417 @@
+<div class="l-bg-content">
+  <div class="p-top-mv">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_sp-mv01.jpg?v=1685606015" media="(max-width: 767.98px)"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_mv01.jpg?v=1685605616" alt="">
+          </picture>
+        </div>
+        <!-- /.swiper-slide -->
+        <div class="swiper-slide">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_sp-mv03.jpg?v=1685606015" media="(max-width: 767.98px)"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_mv03.jpg?v=1685605616" alt="">
+          </picture>
+        </div>
+        <!-- /.swiper-slide -->
+        <div class="swiper-slide">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_sp-mv02.jpg?v=1685606015" media="(max-width: 767.98px)"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_mv02.jpg?v=1685605616" alt="">
+          </picture>
+        </div>
+        <!-- /.swiper-slide -->
+      </div>
+      <!-- /.swiper-wrapper -->
+    </div>
+    <!-- /.swiper -->
+    <div class="swiper-pagination"></div>
+  </div>
+  <!-- /.p-top-mv -->
+  <section class="p-top-sale">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center">ピックアップ
+        <span class="c-en">PICK UP</span>
+      </h2>
+      <!-- /.p-section__ttl -->
+      <ul class="p-sale__list">
+        {% for block in section.blocks %}
+          {% if block.settings.custom_image != blank %}
+            <li class="p-sale__item">
+              <a href="{{ block.settings.custom_url }}">
+                <div class="p-sale__content">
+                  <div class="p-img-wrapper">
+                    <img src="{{ block.settings.custom_image.src | img_url: 'master' }}" alt="" />
+                  </div>
+                </div>
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        <!-- /.p-sale__item -->
+      </ul>
+      <!-- /.p-sale__list -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-top-sale -->
+  <section class="p-top-reccomend l-bg-black">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-txtcolor--white u-align--center">
+        <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_logo_w.png?v=1681797669" alt=""></i>スタッフ厳選<span class="c-en">RECOMMEND</span>
+      </h2>
+      <!-- /.p-section__ttl -->
+      <ul class="p-reccomend__list">
+        {% assign staff = collections['staff'] %}
+        {% for product in staff.products limit: 3 %}
+          <li class="p-reccomend__item">
+            <a href="{{ product.url }}">
+              <div class="p-reccomend__content">
+                <div class="p-img-wrapper">
+                  <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="">
+                </div>
+                <!-- /.p-img-wrapper -->
+                <div class="p-item__body">
+                  <h3 class="c-ttl">{{ product.title }}</h3>
+                  <p class="c-txt">{{ product.price | money }}</p>
+                </div>
+                <!-- /.p-item__body -->
+              </div>
+              <!-- /.p-reccomend__content -->
+            </a>
+          </li>
+        {% endfor %}
+        <!-- /.p-reccomend__item -->
+      </ul>
+      <!-- /.p-reccomend__list -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-top-reccomend -->
+  <section class="p-top-ranking">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center">
+        <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_logo_b.png?v=1681797669" alt=""></i>ランキング
+        <span class="c-en">RANKING</span>
+      </h2>
+      <!-- /.p-section__ttl -->
+      <ul class="p-ranking__list">
+        {% assign ranking = collections['ranking'] %}
+        {% for product in ranking.products limit: 4 %}
+          <li class="p-ranking__item">
+            <a href="{{ product.url }}">
+              <div class="p-ranking__content">
+                <div class="p-ranking__num"></div>
+                <!-- /.p-ranking__num -->
+                <div class="p-img-wrapper">
+                  <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="">
+                </div>
+                <!-- /.p-img-wrapper -->
+                <div class="p-item__body">
+                  <h3 class="c-ttl">{{ product.title }}</h3>
+                  <p class="c-txt">{{ product.price | money }}</p>
+                </div>
+                <!-- /.p-item__body -->
+              </div>
+              <!-- /.p-ranking__content -->
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <!-- /.p-ranking__list -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-top-lanking -->
+  <section class="p-top-about-iegyu">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center">
+        <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_logo_b.png?v=1681797669" alt=""></i>伊江牛について<span class="c-en">ABOUT
+          IEGYU</span>
+      </h2>
+      <!-- /.p-section__ttl -->
+      <ul class="p-about-iegyu__list">
+        <li class="p-about-iegyu__item">
+          <a href="/pages/brand">
+            <div class="p-about-iegyu__content">
+              <div class="p-txt-wrapper">
+                <h3 class="c-ttl">ブランド牛<br>
+                  『伊江牛』について</h3>
+              </div>
+              <!-- /.p-txt-wrapper -->
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/o_bg_about_iegyu01.jpg?v=1682400857" alt="ブランド牛『伊江牛』について">
+              </div>
+              <!-- /.p-img-wrapper -->
+            </div>
+            <!-- /.p-about-iegyu__content -->
+          </a>
+        </li>
+        <!-- /.p-about-iegyu__item -->
+        <li class="p-about-iegyu__item">
+          <a href="/pages/quality">
+            <div class="p-about-iegyu__content">
+              <div class="p-txt-wrapper">
+                <h3 class="c-ttl">加工技術について</h3>
+              </div>
+              <!-- /.p-txt-wrapper -->
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/o_bg_about_iegyu02.jpg?v=1682400857" alt="加工技術について">
+              </div>
+              <!-- /.p-img-wrapper -->
+            </div>
+            <!-- /.p-about-iegyu__content -->
+          </a>
+        </li>
+        <!-- /.p-about-iegyu__item -->
+      </ul>
+      <!-- /.p-about-iegyu__list -->
+      <div class="p-link-wrapper">
+        <a href="{{ routes.root_url }}" class="c-link c-linkcolor--2 c-link-box">
+          <span>伊江牛ブランドサイトへ</span>
+          <svg viewBox="0 0 81 52" class="p-icn-link">
+            <use xlink:href="#c-icn-link"></use>
+          </svg>
+        </a>
+      </div>
+      <!-- /.p-link-wrapper -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-top-about-iegyu -->
+  <section class="p-top-category">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center">
+        <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_logo_b.png?v=1681797669" alt=""></i>商品カテゴリ<span class="c-en">CATEGORY</span>
+      </h2>
+      <!-- /.p-section__ttl -->
+      <ul class="p-category__list">
+        {% for link in linklists.online_top_category.links %}
+          {% assign collection = link.object %}
+          <li class="p-category__item">
+            <a href="{{ link.url }}">
+              <div class="p-category__content">
+                <h3 class="p-cateogry__ttl">{{ link.title }}</h3>
+                <div class="p-img-wrapper">
+                  <picture>
+                    <source srcset="{{ collection.image.src | img_url: 'master' }}" media="(max-width: 767.98px)">
+                    <img src="{{ collection.image.src | img_url: 'master' }}" alt="">
+                  </picture>
+                </div>
+                <!-- /.p-img-wrapper -->
+              </div>
+              <!-- /.p-category__content -->
+            </a>
+          </li>
+        {% endfor %}
+        <!-- /.p-category__item -->
+      </ul>
+      <!-- /.p-category__list -->
+      <div class="p-link-wrapper">
+        <a href="/collections/all" class="c-link c-linkcolor--2">
+          <span>全ての商品を見る</span>
+          <svg viewBox="0 0 81 52" class="p-icn-link">
+            <use xlink:href="#c-icn-link"></use>
+          </svg>
+        </a>
+      </div>
+      <!-- /.p-link-wrapper -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-top-category -->
+  <section class="p-top-info">
+    <div class="l-content__inner">
+      <div class="p-top-info__content">
+        <h2 class="p-section__ttl u-align--center">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_logo_b.png?v=1681797669" alt=""></i>お知らせ<span class="c-en">INFORMATION</span>
+          <!-- /.c-icn -->
+        </h2>
+        <!-- /.p-section__ttl -->
+        <ul class="p-info__list">
+          {% for article in blogs['news'].articles limit: 3 %}
+            <li class="p-info__item">
+              <a href="{{ article.url }}">
+                <div class="p-info__content">
+                  <time datetime="2022-12-25">{{ article.created_at | date: '%Y年%m月%d日' }}</time>
+                  <h3 class="c-info__ttl">
+                    {{ article.title }}
+                  </h3>
+                </div>
+              </a>
+            </li>
+            <!-- /.p-card -->
+          {% endfor %}
+          <!-- /.p-info__item -->
+        </ul>
+        <!-- /.p-info__list -->
+        <div class="p-link-wrapper">
+          <a href="/blogs/news" class="c-link c-linkcolor--2">
+            <span>一覧を見る</span>
+            <svg viewBox="0 0 81 52" class="p-icn-link">
+              <use xlink:href="#c-icn-link"></use>
+            </svg>
+          </a>
+        </div>
+        <!-- /.p-link-wrapper -->
+      </div>
+      <!-- /.p-top-info__content -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-top-news -->
+</div>
+<!-- /.l-bg-content -->
+<div class="l-bg-bottom">
+  <section class="p-checked">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center ">チェックした商品
+        <span class="c-en">CHECKED</span>
+      </h2>
+      <ul class="p-checked__list">
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="#">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+      </ul>
+      <!-- /.p-checked__list -->
+    </div>
+    <!-- /.l-content__inner -->
+    <div class="l-content__fake"></div>
+    <!-- /.l-content__fake -->
+  </section>
+  <section class="p-bottom-inquiry">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center c-shuei">お問い合わせ<span class="c-en">CONTACT</span>
+      </h2>
+      <!-- /.c-section__ttl -->
+      <div class="p-bottom-inquiry-content">
+        <a href="tel:0989922929" class="p-bottom-inquiry__block p-tel">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_tel.svg?v=1681797668" alt=""></i>
+          <div>
+            <p class="c-en c-ttl">TEL</p>
+            <p class="c-tel-num">098-992-2929</p>
+            <p class="c-hour">（受付時間 9:00〜20:00）</p>
+          </div>
+
+        </a>
+        <!-- /.p-bottom-inquiry__tel -->
+        <a href="/pages/contact" class="p-bottom-inquiry__block p-form">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_mail.svg?v=1681797669" alt=""></i>
+          <div>
+            <p class="c-txt">お問い合わせフォーム</p>
+          </div>
+        </a>
+        <!-- /.p-bottom-inquiry__form -->
+      </div>
+      <!-- /.p-bottom-inquiry-content -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-bottom-inquiry -->
+</div>
+<!-- /.l-bg-bottom -->
+
+
+{% schema %}
+  {
+    "name": "online_top",
+    "blocks": [
+      {
+        "type": "image_with_url",
+        "name": "期間限定セール",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "custom_image",
+            "label": "画像を選択"
+          }, {
+            "type": "url",
+            "id": "custom_url",
+            "label": "リンク先URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "online_top"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "settings": {
+        "layout": "collage",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "82d308c8-537e-4b53-bb76-62b8e6a9c872": {
+      "type": "news-list",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "82d308c8-537e-4b53-bb76-62b8e6a9c872"
+  ]
+}

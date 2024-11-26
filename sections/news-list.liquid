@@ -1,0 +1,87 @@
+<div class="l-bg-content">
+  <div class="p-news-list">
+    <a href="/pages/online" class="p-fix-bnr">
+      <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_cart.svg?v=1681795967" alt=""></i>
+      <div class="p-txt-wrapper">
+        <p class="c-txt">オンラインストアはこちら</p>
+        <p class="c-en">ONLINE STORE</p>
+      </div>
+    </a>
+    <!-- /.p-fix-bnr -->
+    <div class="p-mv bland_under_mv">
+      <h1 class="p-content__ttl c-shuei bland_under_ttl">お知らせ一覧<span class="c-en">NEWS</span>
+      </h1>
+      <picture>
+        <source srcset="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/mv_news_sp.jpg?v=1681791650" media="(max-width: 767.98px)">
+        <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/mv_news.jpg?v=1681791651" alt="">
+      </picture>
+    </div>
+    <!-- /.p-mv -->
+    {%- paginate blog.articles by 8 -%}
+      <section class="p-newsli-iegyu">
+        <div class="l-content__inner">
+          <div class="p-newsli-box">
+            <ul>
+              {%- for article in blog.articles -%}
+                <li>
+                  <a href="{{ article.url }}">
+                    <div><img src="{{ article.image.src | img_url: 'master' }}" alt=""></div>
+                    <p>
+                      <span>{{ article.created_at | date: '%Y年%m月%d日' }}</span>
+                    </p>
+                    <p>{{ article.title }}</p>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+          {% if paginate.pages > 1 %}
+            {% render "pagination", paginate: paginate %}
+          {% endif %}
+        </div>
+        <!-- /.l-content__inner -->
+      </section>
+    {%- endpaginate -%}
+
+    <section class=" p-bottom-inquiry">
+      <div class="l-content__inner">
+        <h2 class="p-section__ttl u-align--center c-shuei">お問い合わせ<span class="c-en">CONTACT</span>
+        </h2>
+        <!-- /.c-section__ttl -->
+        <div class="p-bottom-inquiry-content">
+          <a href="tel:0989922929" class="p-bottom-inquiry__block p-tel">
+            <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_tel.svg?v=1681795966" alt=""></i>
+            <div>
+              <p class="c-en c-ttl">TEL</p>
+              <p class="c-tel-num">098-992-2929</p>
+              <p class="c-hour">（受付時間 9:00〜20:00）</p>
+            </div>
+
+          </a>
+          <!-- /.p-bottom-inquiry__tel -->
+          <a href="/pages/contact" class="p-bottom-inquiry__block p-form">
+            <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_mail.svg?v=1681795966" alt=""></i>
+            <div>
+              <p class="c-txt">お問い合わせフォーム</p>
+            </div>
+          </a>
+          <!-- /.p-bottom-inquiry__form -->
+        </div>
+        <!-- /.p-bottom-inquiry-content -->
+      </div>
+      <!-- /.l-content__inner -->
+    </section>
+    <!-- /.p-bottom-inquiry -->
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "news-list",
+    "presets": [
+      {
+        "name": "news-list"
+      }
+    ]
+  }
+{% endschema %}

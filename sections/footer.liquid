@@ -1,0 +1,171 @@
+{% if handle contains 'online' or handle contains 'transaction' or template.name == 'collection' or template.name == 'product' or template.name == 'cart' or template.name == 'search' or template.name == 'account' or template.name == 'addresses' or template.name == 'login' or template.name == 'order' or template.name == 'register' %}
+  {% comment %} オンラインストアのフッター {% endcomment %}
+  <footer class="l-footer">
+    <div class="p-pagetop-content">
+      <a href="#" class="c-pagetop">
+        <span class="c-en">PAGE<br>TOP</span>
+      </a>
+      <!-- /.c-pagetop -->
+    </div>
+    <!-- /.p-pagetop-content -->
+    <div class="l-footer__inner">
+      <ul class="l-footer-content">
+        <li class="l-footer-content__list p-list01">
+          <i class="c-icn">
+            <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_footer01.svg?v=1681797674" alt="">
+          </i>
+          <div class="p-txt-wrapper">
+            <h3 class="c-ttl">送料・お届けについて</h3>
+            <p class="c-txt">送料は全国一律1,600円。<br class="u-pc">10,000円以上お買い上げで、全国どこでも送料無料となります。</p>
+          </div>
+        </li>
+        <!-- /.l-footer-content__list -->
+        <li class="l-footer-content__list p-list02">
+          <i class="c-icn">
+            <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_footer02.svg?v=1681797668" alt="">
+          </i>
+          <div class="p-txt-wrapper">
+            <h3 class="c-ttl">販売価格について</h3>
+            <p class="c-txt">販売価格は、表示された金額（表示価格/消費税込）と致します。</p>
+          </div>
+        </li>
+        <!-- /.l-footer-content__list -->
+        <li class="l-footer-content__list p-list03">
+          <i class="c-icn">
+            <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_footer03.svg?v=1681797668" alt="">
+          </i>
+          <div class="p-txt-wrapper">
+            <h3 class="c-ttl">代金（対価）の支払方法と時期</h3>
+            <p class="c-txt">支払方法：クレジットカードによる決済がご利用頂けます。<br>支払時期：商品注文確定時でお支払いが確定致します。</p>
+          </div>
+          <img
+            src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_paymentbrand.jpg?v=1681797674"
+            alt=""
+            class="c-img">
+        </li>
+        <!-- /.l-footer-content__list -->
+        <li class="l-footer-content__list p-list04">
+          <i class="c-icn">
+            <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_footer04.svg?v=1681797668" alt="">
+          </i>
+          <div class="p-txt-wrapper">
+            <h3 class="c-ttl">返品についての特約に関する事項</h3>
+            <p class="c-txt">商品に欠陥がある場合を除き、基本的には返品には応じません。</p>
+          </div>
+        </li>
+        <!-- /.l-footer-content__list -->
+      </ul>
+      <!-- /.l-footer-content -->
+      <div class="l-footer__bottom">
+        <nav class="l-footer__nav">
+          <ul class="l-footer__nav-list">
+            <li class="l-footer__nav-item u-sp c-link01">
+              <a href="/pages/iegyu" class="l-footer__nav-link">伊江牛について</a>
+            </li>
+            <li class="l-footer__nav-item c-link02">
+              <a href="/pages/transaction" class="l-footer__nav-link">特商法の表記</a>
+            </li>
+            <li class="l-footer__nav-item c-link03">
+              <a href="/pages/about#company" class="l-footer__nav-link">会社概要</a>
+            </li>
+            <li class="l-footer__nav-item c-link04">
+              <a href="/pages/privacy" class="l-footer__nav-link">プライバシーポリシー</a>
+            </li>
+            <li class="l-footer__nav-item u-sp c-link05">
+              <a href="/blogs/news" class="l-footer__nav-link">お知らせ</a>
+            </li>
+          </ul>
+          <!-- /.l-footer__nav-list -->
+        </nav>
+        <!-- /.l-footer__nav -->
+        <div class="l-footer__logo-add">
+          <div class="l-footer__logo c-shadow">
+            <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_logo_w.png?v=1681797669" alt="農業生産法人株式会社伊江牛">
+          </div>
+          <!-- /.l-footer__logo -->
+          <div class="l-footer__add">
+            <p class="c-txt">本社:<br class="u-sp">沖縄県国頭郡伊江村字西江前1898-1</p>
+            <p class="c-txt">本社新社屋:<br class="u-sp">沖縄県糸満市糸満1573-2</p>
+            <p class="c-txt c-tel">
+              <a href="tel:0989922929">TEL:098-992-2929</a>
+            </p>
+            <p class="c-txt">FAX:098-995-1129</p>
+          </div>
+          <!-- /.l-footer__add -->
+        </div>
+        <!-- /.l-footer__logo-add -->
+        <p class="c-copyright c-en">Copyright © 2020 Iegyu Co. All rights reserved.</p>
+      </div>
+      <!-- /.l-footer__bottom -->
+    </div>
+    <!-- /.l-footer__inner -->
+  </footer>
+
+{% else %}
+  {% comment %} ブランドサイトのフッター {% endcomment %}
+  <footer class="l-footer">
+    <div class="p-pagetop-content">
+      <a href="#" class="c-pagetop">
+        PAGE<br>TOP
+      </a>
+    </div>
+    <!-- /.c-pagetop -->
+    <div class="l-footer__inner">
+      <div class="l-footer__content">
+        <div class="l-footer__logo-add-content">
+          <div class="l-footer__logo">
+            <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/logo_w.png?v=1681795967" alt="農業生産法人株式会社伊江牛">
+          </div>
+          <!-- /.l-footer__logo -->
+          <div class="l-footer__add">
+            <p class="l-footer__txt">本社:沖縄県国頭郡伊江村字西江前1898-1</p>
+            <p class="l-footer__txt">本社新社屋:沖縄県糸満市糸満1573-2</p>
+            <div class="l-footer__tel-fax-wrapper">
+              <p class="l-footer__txt c-tel">
+                <a href="tel:0989922929">TEL:098-992-2929</a>
+              </p>
+              <p class="l-footer__txt c-fax">FAX:098-995-1129</p>
+
+            </div>
+            <!-- /.l-footer__tel-fax-wrapper -->
+          </div>
+          <!-- /.l-footer__add -->
+        </div>
+        <!-- /.l-footer__logo-add-content -->
+        <div class="l-footer__nav-content">
+          <nav class="l-footer__nav">
+            <ul class="l-footer__nav-list c-frist-nav">
+              {% for link in linklists.footer.links %}
+                <li class="l-footer__nav-item">
+                  <a href="{{ link.url }}" class="l-footer__nav-link">
+                    -{{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+            <ul class="l-footer__nav-list c-second-nav">
+              {% for link in linklists.brand-sub_footer.links %}
+                <li class="l-footer__nav-item">
+                  <a href="{{ link.url }}" class="l-footer__nav-link">
+                    -{{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+          <!-- /.l-footer__nav -->
+        </div>
+        <!-- /.l-footer__nav-content -->
+        <div class="l-footer__line">
+          <a href="https://lin.ee/ZEavOY3"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/btn_line.png?v=1681795967" alt="LINE 友だち追加"></a>
+        </div>
+        <!-- /.l-footer__line -->
+      </div>
+      <!-- /.l-footer__content -->
+      <p class="c-copyright">Copyright © 2020 Iegyu Co. All rights reserved.</p>
+    </div>
+    <!-- /.l-footer__inner -->
+  </footer>
+
+
+{% endif %}

@@ -1,0 +1,121 @@
+<div class="l-bg-content">
+  <div class="p-news">
+    <a href="/pages/online" class="p-fix-bnr">
+      <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_cart.svg?v=1681795967" alt=""></i>
+      <div class="p-txt-wrapper">
+        <p class="c-txt">オンラインストアはこちら</p>
+        <p class="c-en">ONLINE STORE</p>
+      </div>
+    </a>
+    <!-- /.p-fix-bnr -->
+    <div class="p-mv">
+      <picture>
+        <source srcset="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/mv_news02_sp.jpg?v=1681791650" media="(max-width: 767.98px)">
+        <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/mv_news02.jpg?v=1681791650" alt="">
+      </picture>
+    </div>
+    <!-- /.p-mv -->
+    <section class="p-news-iegyu">
+      <div class="l-content__inner">
+        <div class="p-news-box">
+          <div class="p-ttl">
+            <h1>{{ article.title }}</h1>
+            <div class="sub_info">
+              <time>
+                <span><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/news_icon01.png?v=1681795967" alt=""></span>
+                {{ article.created_at | date: '%Y年%m月%d日' }}</time>
+              <time>
+                <span><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/news_icon02.png?v=1681795966" alt=""></span>
+                {{ article.updated_at | date: '%Y年%m月%d日' }}</time>
+              <p>
+                <span><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/news_icon03.png?v=1681795967" alt=""></span>
+                {{ article.tags }}</p>
+            </div>
+          </div>
+          <div class="main_img">
+            <img
+              class="c-img-shadow"
+              src="{{ article.image.src | img_url: 'master' }}"
+              alt="">
+          </div>
+          <div class="p-news_text-content">
+            <p>
+              {{ article.content }}
+            </p>
+          </div>
+        </div>
+
+        <div class="pagenate">
+          {% if blog.previous_article %}
+            <div class="left">
+              <a href="{{blog.previous_article}}">
+                <p>
+                  <span><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/news-arrow_prev.png?v=1681795967" alt=""></span>前の記事</p>
+                <div class="news__thum"><img src="{{ blog.previous_article.image.src | img_url: 'master' }}" alt=""></div>
+                <p>{{ blog.previous_article.title }}</p>
+              </a>
+            </div>
+          {% endif %}
+          <div class="center">
+            <a href="/blogs/news" class="article-template__link link">一覧に戻る</a>
+          </div>
+          {% if blog.next_article %}
+            <div class="right">
+              <a href="{{blog.next_article}}">
+                <p>次の記事<span><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/news-arrow_next.png?v=1681795967" alt=""></span>
+                </p>
+                <div class="news_thum"><img src="{{ blog.next_article.image.src | img_url: 'master' }}" alt=""></div>
+                <p>{{ blog.next_article.title }}</p>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+      <!-- /.l-content__inner -->
+    </section>
+    <!-- /.p-whats-iegyu -->
+
+    <section class=" p-bottom-inquiry">
+      <div class="l-content__inner">
+        <h2 class="p-section__ttl u-align--center c-shuei">お問い合わせ<span class="c-en">CONTACT</span>
+        </h2>
+        <!-- /.c-section__ttl -->
+        <div class="p-bottom-inquiry-content">
+          <a href="tel:0989922929" class="p-bottom-inquiry__block p-tel">
+            <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_tel.svg?v=1681795966" alt=""></i>
+            <div>
+              <p class="c-en c-ttl">TEL</p>
+              <p class="c-tel-num">098-992-2929</p>
+              <p class="c-hour">（受付時間 9:00〜20:00）</p>
+            </div>
+
+          </a>
+          <!-- /.p-bottom-inquiry__tel -->
+          <a href="/pages/contact" class="p-bottom-inquiry__block p-form">
+            <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_mail.svg?v=1681795966" alt=""></i>
+            <div>
+              <p class="c-txt">お問い合わせフォーム</p>
+            </div>
+          </a>
+          <!-- /.p-bottom-inquiry__form -->
+        </div>
+        <!-- /.p-bottom-inquiry-content -->
+      </div>
+      <!-- /.l-content__inner -->
+    </section>
+    <!-- /.p-bottom-inquiry -->
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "news-detail",
+    "presets": [
+      {
+        "name": "news-detail"
+      }
+    ]
+  }
+{% endschema %}

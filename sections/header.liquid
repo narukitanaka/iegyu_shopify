@@ -1,0 +1,228 @@
+{% if handle contains 'online' or handle contains 'transaction' or template.name == 'collection' or template.name == 'product' or template.name == 'cart' or template.name == 'search' or template.name == 'account' or template.name == 'addresses' or template.name == 'login' or template.name == 'order' or template.name == 'register' %}
+{% comment %} オンラインストアのヘッダー {% endcomment %}
+<header class="l-header online-head_md">
+  <div class="l-header__inner">
+    <div class="l-header__content">
+      <div class="l-header__logo-wrapper">
+        <h1 class="l-header__logo">
+          <a href="/pages/online">
+            <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/logo_b.png?v=1681795967" alt="農業生産法人株式会社伊江牛"></a>
+        </h1>
+        <!-- /.l-header__lgoo -->
+        <div class="p-txt-wrapper">
+          <p class="c-txt">オンラインストア</p>
+          <p class="c-en">ONLINE STORE</p>
+
+        </div>
+        <!-- /.p-txt-wrapper -->
+      </div>
+      <!-- /.l-header__logo-wrapper -->
+      <div class="l-header__nav-content">
+        <nav class="l-header__nav">
+          <ul class="l-header__nav-list">
+            <li class="l-header__nav-item u-sp">
+              <a href="/account/register" class="l-header__nav-link"><span>新規会員登録</span></a>
+            </li>
+            <li class="l-header__nav-item u-sp">
+              <a href="/account" class="l-header__nav-link"><span>ログイン</span></a>
+            </li>
+            <li class="l-header__nav-item u-sp">
+              <a href="/cart" class="l-header__nav-link"><span>カート</span></a>
+            </li>
+            <li class="l-header__nav-item js-has-subnav">
+              <span class="l-header__nav-link"><span>商品カテゴリ</span></span>
+              <!-- /.l-header__nav-link -->
+              <div class="p-mega-menu">
+                <div class="p-mega-menu__content">
+                  <dl class="p-mega-menu__block c-block01">
+                    <dt><i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_megamenu01.svg?v=1681797669"
+                          alt=""></i>種類別</dt>
+                    <dd>
+                      <nav class="p-mega-menu__nav">
+                        <ul class="p-mega-menu__nav-list c-col--3">
+                          {% for link in linklists.online-menu_main.links %}
+                            <li class="p-mega-menu__nav-item">
+                              <a href="{{ link.url }}" class="p-mega-menu__nav-link">・{{ link.title }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </nav>
+                    </dd>
+                  </dl>
+                  <!-- /.p-mega-menu__block -->
+                  <dl class="p-mega-menu__block c-block02">
+                    <dt><i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_megamenu02.svg?v=1681797669"
+                          alt=""></i>予算・価格別</dt>
+                    <dd>
+                      <nav class="p-mega-menu__nav">
+                        <ul class="p-mega-menu__nav-list c-col--2">
+                          {% for link in linklists.online-menu_price.links %}
+                            <li class="p-mega-menu__nav-item">
+                              <a href="{{ link.url }}" class="p-mega-menu__nav-link">・{{ link.title }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </nav>
+                    </dd>
+                  </dl>
+                  <!-- /.p-mega-menu__block -->
+                </div>
+                <!-- /.p-mega-menu__content -->
+              </div>
+              <!-- /.p-meaga-menu -->
+            </li>
+            <li class="l-header__nav-item">
+              <a href="/pages/brand" class="l-header__nav-link"><span>伊江牛について</span></a>
+            </li>
+          </ul>
+          <!-- /.l-header__nav-list -->
+        </nav>
+        <!-- /.l-header__nav -->
+        <div class="l-header__search-content">
+          <form method="get" action="/search">
+            <div class="l-header__search-inner">
+              <input type="text" name="q" placeholder="キーワードを入力">
+              <input type="hidden" name="type" value="product">
+              <input type="image" src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_search.svg?v=1681797669" alt="検索"
+                class="c-icn-search">
+            </div>
+            <!-- /.l-header__search-inner -->
+          </form>
+        </div>
+        <!-- /.l-header__search-content -->
+        <div class="l-header__sp-secondary-nav-content">
+          <nav class="p-secondary-nav">
+            <ul class="p-secondary-nav__list">
+              <li class="p-secondary-nav__item">
+                <a href="/pages/about#company" class="p-secondary-nav__link">会社概要</a>
+              </li>
+              <li class="p-secondary-nav__item">
+                <a href="/pages/transaction" class="p-secondary-nav__link">特商法の表記</a>
+              </li>
+              <li class="p-secondary-nav__item">
+                <a href="/pages/privacy" class="p-secondary-nav__link">プライバシーポリシー</a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.p-secondary_nav -->
+        </div>
+        <!-- /.l-header__sp-nav-content -->
+        <div class="l-header__tel-content">
+          <a href="tel:0989922929" class="p-tel">
+            <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_tel.svg?v=1681795966" alt=""></i>
+            <div>
+              <p class="c-en c-ttl">TEL</p>
+              <p class="c-tel-num">098-992-2929</p>
+              <p class="c-hour">（受付時間 9:00〜20:00）</p>
+            </div>
+
+          </a>
+          <!-- /.p-bottom-inquiry__tel -->
+        </div>
+        <!-- /.l-header__tel-content -->
+      </div>
+      <!-- /.l-header__nav-content -->
+      <div class="l-header__right-content">
+        <div class="l-header__cart-content">
+          <a href="/cart" class="p-cart"><i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_cart.svg?v=1681797669"
+                alt=""></i>
+            <p class="c-txt">カート</p>
+          </a>
+        </div>
+        <!-- /.l-header__cart-content -->
+        <div class="l-header__ham-content">
+          <button class="p-hamburger">
+            <span class="c-line"></span>
+            <span class="c-line"></span>
+            <span class="c-line"></span>
+          </button>
+          <span class="c-ham-txt">MENU</span>
+        </div>
+        <!-- /.l-header__ham-content -->
+
+      </div>
+      <!-- /.l-header__right-content -->
+
+    </div>
+    <!-- /.l-header__content -->
+
+  </div>
+  <!-- /.l-header__inner -->
+</header>
+
+{% else %}
+{% comment %} ブランドサイトのヘッダー {% endcomment %}
+<div class="p-mega-menu">
+  <div class="p-mega-nemu__logo">
+    <a href="{{ routes.root_url }}"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/logo_b.png?v=1681795967" alt="農業生産法人株式会社伊江牛"></a>
+  </div>
+  <!-- /.p-mega-nemu__logo -->
+  <div class="p-mega-menu__inner">
+    <div class="p-mega-menu-content">
+      <div class="p-global-menu-content">
+        <nav class="p-global-menu">
+          <ul class="p-global-menu__list">
+          {% for link in linklists.main-menu.links %}
+            <li class="p-global-menu__item">
+              <a href="{{ link.url }}" class="p-global-nemu__link">
+                {{ link.title }}
+                <span class="c-en">{{ link.object.metafields.custom._sub_title }}</span>
+              </a>
+            </li>
+          {% endfor %}
+          </ul>
+        </nav>
+        <!-- /.p-global-manu -->
+      </div>
+      <!-- /.p-global-menu-content -->
+      <div class="p-primary-menu-content">
+        <a href="/pages/online" class="p-onlinestore-link-content">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_cart.svg?v=1681795967" alt=""></i>
+          <div class="p-txt-wrapper">
+            <p class="c-txt">オンラインストア<span class="u-sp-inline">はこちら</span>
+            <p class="c-en">ONLINE
+              STORE</p>
+          </div>
+        </a>
+        <!-- /.p-onlinestore-link-content -->
+        <nav class="p-primary-menu">
+          <ul class="p-primary-menu__list">
+            {% for link in linklists.brand-sub_header.links %}
+              <li class="p-primary-menu__item">
+                <a href="{{ link.url }}" class="p-primary-menu__link">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+        <!-- /.p-primary-nenu -->
+      </div>
+      <!-- /.p-primary-menu-content -->
+    </div>
+    <!-- /.p-mega-menu-content -->
+
+  </div>
+  <!-- /.p-mega-menu__inner -->
+</div>
+<!-- /.p-mega-menu -->
+<div class="p-hambager-content">
+  <button type="button" class="p-hambager">
+    <span class="c-line"></span>
+    <span class="c-line"></span>
+    <span class="c-line"></span>
+  </button>
+  <p class="c-ham-txt c-en">MENU</p>
+</div>
+<!-- /.p-hambager-content -->
+<header class="l-header">
+  <div class="l-header__inner">
+    <h1 class="l-header__logo">
+      <a href="{{ routes.root_url }}"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/logo_w.png?v=1681795967" alt="農業生産法人株式会社伊江牛"></a>
+    </h1>
+    <!-- /.l-header__logo -->
+  </div>
+  <!-- /.l-header__inner -->
+</header>
+
+{% endif %}

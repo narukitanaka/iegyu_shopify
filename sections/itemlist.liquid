@@ -1,0 +1,282 @@
+<div class="l-bg-content">
+  <div class="p-mv">
+    <div class="p-mv__txt-wrapper">
+      <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_logo_w.png?v=1681797669" alt=""></i>
+      <h1 class="p-content__ttl">{{ collection.title }}<span class="c-en">{{ collection.metafields.custom.collection_subtitle }}</span>
+      </h1>
+    </div>
+    <!-- /.p-mv__txt-wrapper -->
+    <picture>
+      <source srcset="{{ collection | img_url: 'master' }}" media="(max-width: 767.98px)">
+      <img
+        class="p-mv_collection-img"
+        src="{{ collection | img_url: 'master' }}"
+        alt="">
+    </picture>
+  </div>
+  <!-- /.p-mv -->
+  <div class="p-breadcrumb">
+    <div class="l-content__inner">
+      <ol
+        class="p-breadcrumb__list"
+        itemscope
+        itemtype="https://schema.org/BreadcrumbList">
+        <li
+          class="p-breadcrumb__item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="/pages/online">
+            <span itemprop="name"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_icn_home.svg?v=1681797668" alt="HOME"></span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li
+          class="p-breadcrumb__item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+          <span itemprop="name">{{ collection.title }}</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+    </div>
+    <!-- /.l-content__inner -->
+  </div>
+  <!-- /.p-breadcrumb -->
+
+  {% if cart.attributes.pagination != blank %}
+    {%- assign limit = cart.attributes.pagination %}
+  {% else %}
+    {% assign limit = 20 -%}
+  {% endif %}
+  {% paginate collection.products by limit %}
+    <div class="p-merchandise-content">
+      <div class="l-content__inner">
+        <div class="p-order-content">
+          <dl class="p-order">
+            <dt class="p-order__ttl">並べ替え</dt>
+            <dd>
+              <ul class="p-order__list">
+                <li class="p-order__item sort-by">
+                  <a href="/" data-sort-by="best-selling">おすすめ順</a>
+                </li>
+                <li class="p-order__item sort-by">
+                  <a href="/" data-sort-by="price-ascending">価格が安い順</a>
+                </li>
+                <li class="p-order__item sort-by">
+                  <a href="/" data-sort-by="created-descending">新着順</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <!-- /.p-order -->
+          <div class="p-select-wrapper">
+            <select id="sort-by-select">
+              <option value="best-selling">おすすめ順</option>
+              <option value="price-ascending">価格が安い順</option>
+              <option value="created-descending">新着順</option>
+            </select>
+          </div>
+          <!-- /.p-select-wrapper -->
+        </div>
+        <!-- /.p-order-content -->
+        <ul class="p-cards">
+          {% for product in collection.products %}
+            <li class="p-card">
+              <a href="{{ product.url }}">
+                <div class="p-card-content">
+                  <div class="p-card__img-wrapper">
+                    <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="">
+                  </div>
+                  <div class="p-card__body">
+                    <p class="c-ttl">{{ product.title }}</p>
+                    <p class="c-txt">{{ product.price | money }}</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+          <!-- /.p-card -->
+        </ul>
+        <!-- /.p-cards -->
+
+        {% if paginate.pages > 1 %}
+          {% render "pagination", paginate: paginate %}
+        {% endif %}
+
+      </div>
+      <!-- /.l-content__inner -->
+    </div>
+    <!-- /.p-merchandise-content -->
+  {% endpaginate %}
+</div>
+<!-- /.l-bg-content -->
+<div class="l-bg-bottom">
+  <section class="p-checked">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center ">チェックした商品
+        <span class="c-en">CHECKED</span>
+      </h2>
+      <ul class="p-checked__list">
+        <li class="p-checked__item">
+          <a href="item.html">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="item.html">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="item.html">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="item.html">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+        <li class="p-checked__item">
+          <a href="item.html">
+            <div class="p-checked__content">
+              <div class="p-img-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/online_img_item_dummy.jpg?v=1681797669" alt="黒毛和牛赤身切り落とし1kg">
+              </div>
+              <div class="p-item__body">
+                <h3 class="c-ttl">黒毛和牛赤身切り落とし1kg</h3>
+                <p class="c-txt">¥2,376</p>
+                <!-- /.c-price -->
+              </div>
+              <!-- /.p-item__body -->
+            </div>
+          </a>
+        </li>
+        <!-- /.p-checked__item -->
+      </ul>
+      <!-- /.p-checked__list -->
+    </div>
+    <!-- /.l-content__inner -->
+    <div class="l-content__fake"></div>
+    <!-- /.l-content__fake -->
+  </section>
+  <section class="p-bottom-inquiry">
+    <div class="l-content__inner">
+      <h2 class="p-section__ttl u-align--center c-shuei">お問い合わせ<span class="c-en">CONTACT</span>
+      </h2>
+      <!-- /.c-section__ttl -->
+      <div class="p-bottom-inquiry-content">
+        <a href="tel:0989922929" class="p-bottom-inquiry__block p-tel">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_tel.svg?v=1681795966" alt=""></i>
+          <div>
+            <p class="c-en c-ttl">TEL</p>
+            <p class="c-tel-num">098-992-2929</p>
+            <p class="c-hour">（受付時間 9:00〜20:00）</p>
+          </div>
+
+        </a>
+        <!-- /.p-bottom-inquiry__tel -->
+        <a href="/pages/contact" class="p-bottom-inquiry__block p-form">
+          <i class="c-icn"><img src="https://cdn.shopify.com/s/files/1/0746/3652/5852/files/icn_mail.svg?v=1681795966" alt=""></i>
+          <div>
+            <p class="c-txt">お問い合わせフォーム</p>
+          </div>
+        </a>
+        <!-- /.p-bottom-inquiry__form -->
+      </div>
+      <!-- /.p-bottom-inquiry-content -->
+    </div>
+    <!-- /.l-content__inner -->
+  </section>
+  <!-- /.p-bottom-inquiry -->
+</div>
+<!-- /.l-bg-bottom -->
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var sortByLinks = document.querySelectorAll('.sort-by a');
+
+    sortByLinks.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        var sortByValue = this.getAttribute('data-sort-by');
+        var currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('sort_by', sortByValue);
+        window.location.href = currentUrl.toString();
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var sortBySelect = document.getElementById('sort-by-select');
+
+    sortBySelect.addEventListener('change', function() {
+      var sortByValue = this.value;
+      var currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set('sort_by', sortByValue);
+      window.location.href = currentUrl.toString();
+    });
+  });
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "item-list",
+    "presets": [
+      {
+        "name": "item-list"
+      }
+    ]
+  }
+{% endschema %}
